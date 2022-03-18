@@ -59,11 +59,19 @@ def logout():
 def home():
     return render_template('home.html')
 
-@app.route('/Registro')
-def login():
-        user = User(0, request.form['inputName'], request.form['inputUser'], request.form['password1'])
-        registro_usu = ModelUser.register(db, user, fullname, password1)
-       return render_template('auth/registro.html')
+@app.route('/registro', methods=['GET', 'POST'])
+def singup():
+        print("hola")
+        if request.method == 'POST':
+            print("FUE POST")
+            print(request.form['fullname'])
+            print(request.form['username'])
+            print(request.form['password'])
+            ModelUser.register(db, request.form['username'],request.form['username'],request.form['password'] )
+            
+        #user = User(0, request.form['inputName'], request.form['inputUser'], request.form['password1'])
+        #registro_usu = ModelUser.register(db, user, fullname, password1)
+        return  render_template('auth/registro.html')
 
 @app.route('/protected')
 @login_required
