@@ -61,16 +61,16 @@ def home():
 
 @app.route('/registro', methods=['GET', 'POST'])
 def singup():
-        print("hola")
+        errors = []
         if request.method == 'POST':
-            print("FUE POST")
-            print(request.form['fullname'])
-            print(request.form['username'])
-            print(request.form['password'])
-            ModelUser.register(db, request.form['username'],request.form['username'],request.form['password'] )
-            
-        #user = User(0, request.form['inputName'], request.form['inputUser'], request.form['password1'])
-        #registro_usu = ModelUser.register(db, user, fullname, password1)
+            result = ModelUser.register(db, request.form['username'],request.form['username'],request.form['password'] )
+
+            if result != True:
+                errors.append(result)
+            else:
+                flash('Agregado correctamente.', 'success')
+                return render_template('auth/login.html')
+
         return  render_template('auth/registro.html')
 
 @app.route('/protected')
