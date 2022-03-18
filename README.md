@@ -18,5 +18,8 @@ Si ve el texto de ayuda para pip, entonces tiene pip instalado, de lo contrario,
 4. Para instalar los paquetes necesarios:
 ### `pip install -r requirements.txt`
 
+5. Para activar el entorno virtual por esta ruta
+### `.\env\scripts\activate`
+
 5. Inicia el entorno virtual
 ### `python .\src\app.py`

@@ -40,7 +40,7 @@ def login():
                 login_user(logged_user)
                 return redirect(url_for('home'))
             else:
-                flash("Invalid password...")
+                flash("Contraseña Invalida...")
                 return render_template('auth/login.html')
         else:
             flash("User not found...")
@@ -59,6 +59,11 @@ def logout():
 def home():
     return render_template('home.html')
 
+@app.route('/Registro')
+def login():
+        user = User(0, request.form['inputName'], request.form['inputUser'], request.form['password1'])
+        registro_usu = ModelUser.register(db, user, fullname, password1)
+       return render_template('auth/registro.html')
 
 @app.route('/protected')
 @login_required
