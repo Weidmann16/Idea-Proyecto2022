@@ -43,7 +43,7 @@ def login():
                 flash("Contraseña Invalida...")
                 return render_template('auth/login.html')
         else:
-            flash("User not found...")
+            flash("Usuario No Encontrado...")
             return render_template('auth/login.html')
     else:
         return render_template('auth/login.html')
